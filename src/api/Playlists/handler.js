@@ -14,7 +14,7 @@ class PlaylistsHandler {
     const { id: owner } = request.auth.credentials;
     this._validator.validatePlaylistPayload(request.payload);
 
-    const playlistId = await this._service.addPlaylist(name, owner);
+    const { playlistId } = await this._service.addPlaylist({ name, owner });
         
     const response = h.response({
       status: 'success',
